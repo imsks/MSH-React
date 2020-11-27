@@ -1,0 +1,166 @@
+.homepage {
+  margin: 15rem 0 0 0;
+  display: grid;
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+
+  @include respond(tab-port) {
+    gap: 5rem;
+  }
+
+  &__landing {
+    height: 100%;
+    width: 100%;
+
+    &__content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__image {
+        width: 80%;
+        height: auto;
+
+        @include respond(tab-port) {
+          // width: 30%;
+          margin: 0 0 2rem 0;
+        }
+      }
+
+      &__header {
+        width: 80%;
+
+        &__heading {
+          margin: 1rem 0;
+          font-size: 5rem;
+          white-space: nowrap;
+          color: $color-primary;
+
+          @include respond(phone) {
+            font-size: 3rem;
+          }
+        }
+
+        &__subheading {
+          margin: 0 0 2rem 0;
+          font-size: 2rem;
+        }
+
+        &__button {
+          font-size: 2rem;
+          @include respond(phone) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  &__auth {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__header {
+      width: 50%;
+      margin: 0 auto;
+      &__heading {
+        font-size: 4rem;
+        color: $color-primary;
+      }
+    }
+
+    &__content {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+
+      @include respond(tab-port) {
+        width: 60%;
+      }
+
+      @include respond(phone) {
+        width: 80%;
+      }
+
+      &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+        &__group {
+          display: flex;
+          
+          &__input {
+            width: 50% !important;
+
+            &:last-child {
+              margin: 0.5rem 0 0.5rem 1rem;
+            }
+          }
+        }
+
+        &__dates {
+          width: 100%;
+          padding: 2rem 0;
+          height: 10rem;
+          font-size: 1.5rem;
+        }
+
+        &__input {
+          width: 100%;
+          padding: 1rem;
+          margin: 0.5rem 0;
+          outline: none;
+          color: $color-primary;
+          font-size: 1.5rem;
+          border: 2px solid $color-primary;
+          transition: 0.3s all;
+
+          &::placeholder {
+            color: $color-primary;
+            font-weight: 600;
+          }
+
+          &:focus {
+            background-color: $color-primary;
+            color: $color-white;
+          }
+
+          @include respond(phone) {
+            font-size: 3rem;
+          }
+        }
+
+        &__submit {
+          font-size: 2rem;
+          margin-top: 1rem;
+        }
+
+        &__error {
+          margin-top: 2rem;
+          font-size: 2rem;
+          font-weight: 800;
+          color: red;
+        }
+      }
+
+      &__forgotpassword {
+        margin: 2rem 0 0 0;
+        font-size: 2rem;
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+.modal-cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1040;
+  display: none;
+}
+
+// This part decides weather modal will close if clicked outside
+.modal-cover.modal-cover-active {
+  display: block;
+}
+
+.modal-container {
+  z-index: 1050;
+  position: fixed;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  background: white;
+  width: 40%;
+  max-height: 85%;
+  display: none;
+  left: 30%;
+  top: 10%;
+  overflow: auto;
+
+  // @include respond(tab-port) {
+  //   left: 60%;
+  // }
+
+  // @include respond(phone) {
+  //   left: 64%;
+  // }
+
+  @include respond(small-phone) {
+    max-height: 100%;
+    width: 80%;
+  }
+}
+
+.modal-container.modal-container-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // overflow: auto;
+  // max-height: 80%;
+}
+
+.modal-header {
+  margin: 2rem 0 0 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.modal-body {
+  margin: 2rem auto 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal-choose-language {
+  // margin: 3rem auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal-choose-language-label {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.modal-choose-language-radio {
+  margin: 0px 0 3rem 0;
+  width: 100%;
+}
+
+.modal-tile {
+  background: $color-primary;
+  color: $color-white;
+  width: 30%;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+.modal-radio {
+  display: none;
+}
+
+.modal-radio-label {
+  // padding: 0 3rem;
+  width: 80%;
+  height: 12rem;
+  font-size: 2rem;
+  margin: 0 auto 2rem auto;
+  font-weight: 600;
+  background: $color-white;
+  color: $color-black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  transition: 0.3s all;
+  border: 1px solid $color-black
+}
+
+.modal-radio:checked + .modal-radio-label {
+  // padding: 0 3rem;
+  height: 12rem;
+  font-size: 2rem;
+  font-weight: 600;
+  background: $color-primary;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+}
