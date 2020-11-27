@@ -1,7 +1,7 @@
 const envName = "dev";
 
 const dev = {
-  REACT_APP_NODE_API_URL: "http://localhost:8080",
+  REACT_APP_NODE_API_URL: "http://localhost:8000",
 };
 
 const prod = {

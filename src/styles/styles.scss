@@ -10,19 +10,9 @@
 @import 'components/buttons';
 @import 'components/card';
 @import 'components/form';
-@import 'components/process-bars';
-@import 'components/modal';
 @import 'components/loader';
 
 @import 'pages/home-page';
-@import 'pages/user/auth';
-@import 'pages/user/dashboard';
-@import 'pages/user/learn';
-@import 'pages/user/edit-profile';
-@import 'pages/user/forgotpassword';
-@import 'pages/user/update-password';
-@import 'pages/user/verify-email';
-@import 'pages/admin/index';
-@import 'pages/admin/admin';
-@import 'pages/admin/mod';
-@import 'pages/404';
+@import 'pages/admin/dashboard';
+@import 'pages/admin/car-details';
+@import 'pages/admin/add-car';

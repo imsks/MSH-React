@@ -1,47 +1,75 @@
 import axios from "axios";
 import config from "../../config";
 
-// Send Email For Forgot Password
-export const addLanguageData = (payload) => {
+// Edit Car Details
+export const addCarDetails = (payload) => {
   return (dispatch) => {
-    const { _id, languageData } = payload;
-
     axios({
       method: "post",
-      url: `${config.REACT_APP_NODE_API_URL}/api/user/update/${_id}`,
-      data: { languageData },
+      url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/add-car-data/`,
+      data: { ...payload },
     })
       .then((res) => {
+        console.log(res.data);
         dispatch({
-          type: "ADD_LANGUAGE_DATA__SUCCESS",
+          type: "ADD_CAR_DETAILS__SUCCESS",
           message: res.data.message,
         });
       })
       .catch((err) => {
-        console.log(err);
+        dispatch({
+          type: "ADD_CAR_DETAILS__FAILED",
+          error: err.data.message,
+        });
       });
   };
 };
 
-// Send Email For Forgot Password
-export const updateProfileData = (payload) => {
+// Edit Car Details
+export const editCarDetails = (payload) => {
   return (dispatch) => {
-    const data = JSON.parse(localStorage.getItem("currentUser"));
-    const id = data && data._id;
-
     axios({
       method: "post",
-      url: `${config.REACT_APP_NODE_API_URL}/api/user/update/${id}`,
-      data: payload,
+      url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/edit-car-data/`,
+      data: { ...payload },
     })
       .then((res) => {
+        console.log(res.data);
         dispatch({
-          type: "USER_DATA__SAVED__SUCCESS",
+          type: "EDIT_CAR_DETAILS__SUCCESS",
           message: res.data.message,
         });
       })
       .catch((err) => {
-        console.log(err);
+        dispatch({
+          type: "EDIT_CAR_DETAILS__FAILED",
+          error: err.data.message,
+        });
+      });
+  };
+};
+
+// Delete Car Details
+export const deleteCarDetails = (payload) => {
+  return (dispatch) => {
+    console.log(payload);
+    axios({
+      method: "post",
+      url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/delete-a-car/`,
+      data: { ...payload },
+    })
+      .then((res) => {
+        console.log(res.data);
+        dispatch({
+          type: "DELETE_CAR_DETAILS__SUCCESS",
+          message: res.data.message,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "DELETE_CAR_DETAILS__FAILED",
+          error: err.data.message,
+        });
       });
   };
 };

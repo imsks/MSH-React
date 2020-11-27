@@ -4,23 +4,22 @@ import config from "../../config";
 // Signing in User
 export const userSignInWithEmailAndPassword = (credentials) => {
   return (dispatch) => {
-    const { email, password } = credentials;
+    const { userName, password } = credentials;
+    console.log(credentials)
 
     axios({
       method: "post",
-      url: `${config.REACT_APP_NODE_API_URL}/api/auth/signin`,
+      url: `${config.REACT_APP_NODE_API_URL}/api/admin/auth/signin`,
       data: {
-        email,
+        userName,
         password,
       },
     })
       .then((res) => {
-        const { _id } = res.data.user;
+        // const { _id } = res.data.user;
+        // console.log(res.data.data);
 
-        const payload = {
-          _id,
-        };
-        localStorage.setItem("currentUser", JSON.stringify(payload));
+        localStorage.setItem("admin", JSON.stringify(res.data.data));
 
         dispatch({
           type: "SIGNIN_SUCCESS",

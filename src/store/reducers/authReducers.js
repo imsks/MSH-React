@@ -19,7 +19,6 @@ const authReducers = (state = initState, action) => {
       return {
         ...state,
         authError: null,
-        isLangDataExist: !localStorage.getItem("languageData") ? false : true
       };
     case "SIGNIN_ERROR":
       return {

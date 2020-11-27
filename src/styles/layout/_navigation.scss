@@ -1,10 +1,10 @@
 .nav {
   width: 100%;
-  top: 0;
+  // top: 0;
   // height: 20vh;
-  padding: 1rem 0;
+  padding: 2rem 0;
   background-color: $color-primary;
-  position: fixed;
+  // position: fixed;
   display: flex;
   z-index: 9999;
   flex-direction: row;
@@ -17,6 +17,7 @@
   }
 
   &__logo {
+    font-size: 2rem;
     width: 10%;
     height: auto;
     color: $color-white;
@@ -225,7 +226,6 @@
       width: 8px;
       border-radius: 50%;
       background-color: $color-white;
-      
 
       &--1 {
         margin-top: -3rem;

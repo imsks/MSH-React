@@ -29,12 +29,13 @@ const Homepage = (props) => {
     }
   };
 
-  const { id, error } = props;
-  if (id) return <Redirect to="/dashboard" />;
+  const { data, error } = props;
+  if (data) return <Redirect to="/dashboard" />;
 
   return (
     <main className="homepage">
       <section className="homepage__auth">
+        <h1 className="heading-primary--main">Login as an admin</h1>
         <div className="homepage__auth__content">
           <form
             className="homepage__auth__content__form"
@@ -43,7 +44,7 @@ const Homepage = (props) => {
           >
             <input
               type="text"
-              className="homepage__auth__content__form__input homepage__auth__content__form__group__input"
+              className="homepage__auth__content__form__input"
               name="userName"
               placeholder="Your User Name"
               onChange={handleInput}
@@ -78,10 +79,10 @@ const Homepage = (props) => {
 
 const mapStateToProps = (state) => {
   const data = JSON.parse(localStorage.getItem("admin"));
-  const id = data && data._id;
+  console.log(data)
 
   return {
-    id,
+    data,
     error: state.auth.authError,
   };
 };

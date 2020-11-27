@@ -1,64 +1,73 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import config from "../../config";
 
 const AdminDashboard = () => {
-  const [isAllowed, setIsAllowed] = useState(false);
+  const [allCarsList, setAllCarsList] = useState([]);
 
   useEffect(() => {
     // console.log(localStorage.getItem("admin"));
     axios({
       method: "get",
-      url: `${config.REACT_APP_NODE_API_URL}/api/admin/user/get-user/${id}`,
+      url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/get-all-cars`,
     })
       .then((res) => {
-        const { isApproved } = res.data.data;
-        setIsAllowed(isApproved);
+        // console.log(res.data.data);
+        // // const { isApproved } = res.data.data;
+        setAllCarsList(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  // console.log(isAllowed);
+  // console.log(allCarsList);
 
-  const id = localStorage.getItem("currentAdmin");
+  const id = localStorage.getItem("admin");
 
-  if (!id) return <Redirect to="/admin/auth" />;
+  if (!id) return <Redirect to="/" />;
 
   return (
     <section className="admindashboard">
-      <div className="admindashboard__header">
-        <h1 className="admindashboard__header__heading heading-primary--main u-center-text">
-          Welcome to Admin Dashboard
-        </h1>
+      <div className="admindashboard__header__heading heading-primary--main u-center-text">
+        Welcome to MSH
       </div>
 
-      {isAllowed ? (
-        <div className="admindashboard__content">
-          <div className="admindashboard__content__actioncards">
-            <a
-              href="/admin/approve-instructor-requests"
-              className="admindashboard__content__link"
+      <h1 className="admindashboard__header__heading heading-primary--sub u-center-text" style={{margin: "2rem 0"}}>
+        Add A New Car?
+      </h1>
+      <Link
+        to="/add"
+        className="admindashboard__header__link heading-primary--sub u-center-text"
+      >
+        <button className="btn btn-md">Add Car</button>
+      </Link>
+
+      <h1 className="admindashboard__header__heading heading-primary--sub u-center-text" style={{margin: "2rem 0 0 0"}}>
+        Choose a car to change the data
+      </h1>
+      <div className="admindashboard__content">
+        {allCarsList.map((car, key) => {
+          return car.data.carData.carName ? (
+            <Link
+              key={key}
+              className="admindashboard__content__card"
+              to={`/car/${car.id}`}
             >
-              <div className="admindashboard__content__actioncards__item">
-                <h3 className="heading-secondary--main admindashboard__content__actioncards__item__heading">
-                  Approve Instrutor Requests
-                </h3>
-                <p className="heading-secondary--sub admindashboard__content__actioncards__item__subheading">
-                  You can approve instructor requests and add them into Trilingo
-                  family.
-                </p>
-              </div>
-            </a>
-          </div>
-        </div>
-      ) : (
-        <h1 className="admindashboard__header__heading heading-secondary--main u-center-text">
-          You're not authorised to be an admin yet.
-        </h1>
-      )}
+              <h1 className="heading-primary--main">
+                {car.data.carData.carName}
+              </h1>
+              <h2 className="heading-primary--sub">
+                {car.data.carData.modelNo}
+              </h2>
+              <h3 className="heading-primary--sub">{car.data.carData.type}</h3>
+            </Link>
+          ) : (
+            ""
+          );
+        })}
+      </div>
     </section>
   );
 };
