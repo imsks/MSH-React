@@ -9,7 +9,7 @@ const Navbar = (props) => {
   const { data } = props;
 
   const signOut = () => {
-    console.log("Signed out");
+    localStorage.removeItem("admin");
   };
 
   return (
@@ -21,7 +21,7 @@ const Navbar = (props) => {
         </a>
         <nav className="navigation" id="myNav">
           {data ? (
-            <a href="/" onClick={signOut}>
+            <a href="/" onClick={signOut} className="navigation__link">
               Sign out
             </a>
           ) : (

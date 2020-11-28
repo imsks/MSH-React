@@ -50,8 +50,36 @@
               }
             }
           }
+
+          &__label {
+            margin: 1rem 0 0 0;
+            font-size: 2rem;
+            font-weight: 600;
+            color: $color-primary;
+          }  
   
           &__input {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            outline: none;
+            color: $color-primary;
+            font-size: 2rem;
+            border: 2px solid $color-primary;
+            transition: 0.3s all;
+  
+            &::placeholder {
+              color: $color-primary;
+              font-weight: 600;
+            }
+  
+            &:focus {
+              background-color: $color-primary;
+              color: $color-white;
+            }
+          }
+
+          &__select {
             width: 100%;
             padding: 1rem;
             margin: 0.5rem 0;

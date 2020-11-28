@@ -16,8 +16,8 @@
     }
 
     &__link {
-      font-weight: 500;
-      color: $color-primary;
+      font-weight: 700;
+      color: $color-white;
       text-decoration: none;
 
       @include respond(tab-port) {
@@ -52,10 +52,11 @@
       transition: 0.5s all;
       text-decoration: none;
       color: $color-white;
+      height: 100%;
       width: 100%;
 
       @include respond(phone) {
-        padding: 2rem;
+        width: 90%;
       }
 
       &__heading {
@@ -72,9 +73,9 @@
       }
     }
 
-    @include respond(small-phone) {
+    @include respond(phone) {
       width: 100%;
-      margin: 0 auto;
+      margin: 1rem auto;
     }
 
     &__cardlink {

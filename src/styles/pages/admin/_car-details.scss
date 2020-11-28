@@ -14,6 +14,21 @@
         margin: 0 1rem;
       }
     }
+
+    &__loading {
+      font-weight: 600;
+      color: $color-primary;
+      width: 100%;
+
+      @include respond(tab-port) {
+        font-size: 3rem;
+      }
+
+      @include respond(phone) {
+        font-size: 2.5rem;
+        margin: 0 1rem;
+      }
+    }
   }
 
   &__auth {
@@ -51,6 +66,12 @@
           }
         }
 
+        &__label {
+          font-size: 2rem;
+          font-weight: 600;
+          color: $color-primary;
+        }
+
         &__input {
           width: 100%;
           padding: 1rem;
@@ -77,6 +98,7 @@
         }
 
         &__submit {
+          width: 100%;
           font-size: 2rem;
           margin-top: 1rem;
         }

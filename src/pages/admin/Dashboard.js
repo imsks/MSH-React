@@ -34,40 +34,60 @@ const AdminDashboard = () => {
         Welcome to MSH
       </div>
 
-      <h1 className="admindashboard__header__heading heading-primary--sub u-center-text" style={{margin: "2rem 0"}}>
+      <h1
+        className="admindashboard__header__heading heading-primary--sub u-center-text"
+        style={{ margin: "4rem 0 2rem 0" }}
+      >
         Add A New Car?
       </h1>
-      <Link
-        to="/add"
-        className="admindashboard__header__link heading-primary--sub u-center-text"
-      >
-        <button className="btn btn-md">Add Car</button>
-      </Link>
 
-      <h1 className="admindashboard__header__heading heading-primary--sub u-center-text" style={{margin: "2rem 0 0 0"}}>
+      <button className="btn btn-md">
+        <Link
+          to="/add"
+          className="admindashboard__header__link u-center-text"
+        >
+          Add Car
+        </Link>
+      </button>
+
+      <h1
+        className="admindashboard__header__heading heading-primary--sub u-center-text"
+        style={{ margin: "4rem 0 0 0" }}
+      >
         Choose a car to change the data
       </h1>
-      <div className="admindashboard__content">
-        {allCarsList.map((car, key) => {
-          return car.data.carData.carName ? (
-            <Link
-              key={key}
-              className="admindashboard__content__card"
-              to={`/car/${car.id}`}
-            >
-              <h1 className="heading-primary--main">
-                {car.data.carData.carName}
-              </h1>
-              <h2 className="heading-primary--sub">
-                {car.data.carData.modelNo}
-              </h2>
-              <h3 className="heading-primary--sub">{car.data.carData.type}</h3>
-            </Link>
-          ) : (
-            ""
-          );
-        })}
-      </div>
+      {allCarsList.length !== 0 ? (
+        <div className="admindashboard__content">
+          {allCarsList.map((car, key) => {
+            return car.data.carData.carName ? (
+              <Link
+                key={key}
+                className="admindashboard__content__card"
+                to={`/car/${car.id}`}
+              >
+                <h1 className="heading-primary--main">
+                  {car.data.carData.carName}
+                </h1>
+                <h2 className="heading-primary--sub">
+                  {car.data.carData.modelNo}
+                </h2>
+                <h3 className="heading-primary--sub">
+                  {car.data.carData.type}
+                </h3>
+              </Link>
+            ) : (
+              ""
+            );
+          })}
+        </div>
+      ) : (
+        <h1
+          className="admindashboard__header__heading heading-primary--sub u-center-text"
+          style={{ margin: "2rem 0 2rem 0" }}
+        >
+          Loading...
+        </h1>
+      )}
     </section>
   );
 };

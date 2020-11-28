@@ -26,6 +26,8 @@ const Homepage = (props) => {
       case "password":
         setPassword(value);
         break;
+      default:
+        break;
     }
   };
 
@@ -79,7 +81,7 @@ const Homepage = (props) => {
 
 const mapStateToProps = (state) => {
   const data = JSON.parse(localStorage.getItem("admin"));
-  console.log(data)
+  console.log(data);
 
   return {
     data,

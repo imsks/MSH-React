@@ -6,6 +6,9 @@ import config from "../../config";
 import { addCarDetails } from "../../store/actions/userActions";
 
 const AddCar = (props) => {
+  const [carName, setCarName] = useState("");
+  const [modelNo, setModelNo] = useState("");
+  const [type, setType] = useState("");
   const [exShowRoom, setExShowRoom] = useState(0);
   const [taxCollectedAtSource, setTaxCollectedAtSource] = useState(0);
   const [insuranceFor1Year, setInsuranceFor1Year] = useState(0);
@@ -43,6 +46,12 @@ const AddCar = (props) => {
   const handleInput = (e) => {
     const { name, value } = e.currentTarget;
     switch (name) {
+      case "carName":
+        setCarName(value);
+        break;
+      case "modelNo":
+        setModelNo(value);
+        break;
       case "exShowRoom":
         setExShowRoom(value);
         break;
@@ -96,12 +105,20 @@ const AddCar = (props) => {
     }
   };
 
+  // Handle Select type
+  const handleSelectType = () => {
+    setType(document.getElementById("type").selectedOptions[0].value);
+  };
+
   // Handle Car Details
   const handleAddCarDetails = (e) => {
     e.preventDefault();
     setSubmitClicked(true);
     props.addCarDetails({
       carData: {
+        carName,
+        modelNo,
+        type,
         exShowRoom,
         taxCollectedAtSource,
         insuranceFor1Year,
@@ -144,176 +161,204 @@ const AddCar = (props) => {
           autoComplete="false"
           onSubmit={handleAddCarDetails}
         >
+          <label className="addcar__auth__content__form__label">Car Name</label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
-            name="exShowRoom"
-            placeholder="Your Ex ShowRoom Price"
+            name="carName"
             onChange={handleInput}
             autoComplete="false"
             required
           />
+          <label className="addcar__auth__content__form__label">Model No</label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
-            name="exShowRoom"
-            placeholder="Your Ex ShowRoom Price"
+            name="modelNo"
             onChange={handleInput}
             autoComplete="false"
             required
           />
+          <label className="addcar__auth__content__form__label">
+            Choose Car Type
+          </label>
+          <select
+            className="addcar__auth__content__form__select"
+            id="type"
+            onChange={handleSelectType}
+          >
+            <option
+              value="Petrol"
+              className="addcar__auth__content__form__select__option"
+            >
+              Petrol
+            </option>
+            <option
+              value="Diesel"
+              className="addcar__auth__content__form__select__option"
+            >
+              Diesel
+            </option>
+          </select>
+          <label className="addcar__auth__content__form__label">
+            Ex ShowRoom Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="exShowRoom"
-            placeholder="Your Ex ShowRoom Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="exShowRoom"
-            placeholder="Your Ex ShowRoom Price"
-            onChange={handleInput}
-            autoComplete="false"
-            required
-          />
+          <label className="addcar__auth__content__form__label">
+            Tax Collected At Source Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="taxCollectedAtSource"
-            placeholder="Your Tax Collected At Source Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Insurance For 1 Year Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="insuranceFor1Year"
-            placeholder="Your Insurance For 1 Year Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Insurance Differents Amount For 2 Years Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="insuranceDifferentsAmountFor2Years"
-            placeholder="Your Insurance Differents Amount For 2 Years Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Road Tax And Registration Charges Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="roadTaxAndRegistrationCharges"
-            placeholder="Your Road Tax And Registration Charges Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Fastag Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="Fastag"
-            placeholder="Your Fastag Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Basic Accessories Kit Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="basicAccessoriesKit"
-            placeholder="Your Basic Accessories Kit Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Extended Warranty Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="extendedWarranty"
-            placeholder="Your Extended Warranty Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Road Side Assistance Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="roadSideAssistance"
-            placeholder="Your Road Side Assistance Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            On Road Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="onRoadPrice"
-            placeholder="Your On Road Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Zero Dep Policy Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="zeroDepPolicy"
-            placeholder="Your Zero Dep Policy Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Hydrostatic Lock Cover And Key Cost Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="hydrostaticLockCoverAndKeyCost"
-            placeholder="Your Hydrostatic Lock Cover And Key Cost Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Return To Invoice Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="returnToInvoice"
-            placeholder="Your Return To Invoice Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Price To Connected Device Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="priceToConnectedDevice"
-            placeholder="Your Price To Connected Device Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            Total On Road Price With Optional AddOns Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="totalOnRoadPriceWithOptionalAddOns"
-            placeholder="Your Total On Road Price With Optional AddOns Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
+          <label className="addcar__auth__content__form__label">
+            One Year Subscription Of Connected Devices Price
+          </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
             name="oneYearSubscriptionOfConnectedDevices"
-            placeholder="Your One Year Subscription Of Connected Devices Price"
             onChange={handleInput}
             autoComplete="false"
-            required
           />
 
           <button className="btn btn-md addcar__auth__content__form__submit">

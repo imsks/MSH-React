@@ -4,10 +4,11 @@ import config from "../../config";
 // Edit Car Details
 export const addCarDetails = (payload) => {
   return (dispatch) => {
+    console.log(payload);
     axios({
       method: "post",
       url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/add-car-data/`,
-      data: { ...payload },
+      data: { carData: payload.carData },
     })
       .then((res) => {
         console.log(res.data);
@@ -28,6 +29,7 @@ export const addCarDetails = (payload) => {
 // Edit Car Details
 export const editCarDetails = (payload) => {
   return (dispatch) => {
+    // console.log(payload)
     axios({
       method: "post",
       url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/edit-car-data/`,
