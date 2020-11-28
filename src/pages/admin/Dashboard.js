@@ -40,14 +40,9 @@ const AdminDashboard = () => {
         Add A New Car?
       </h1>
 
-      <button className="btn btn-md">
-        <Link
-          to="/add"
-          className="admindashboard__header__link u-center-text"
-        >
-          Add Car
-        </Link>
-      </button>
+      <Link to="/add" className="admindashboard__header__link u-center-text">
+        <button className="btn btn-md">Add Car</button>
+      </Link>
 
       <h1
         className="admindashboard__header__heading heading-primary--sub u-center-text"
