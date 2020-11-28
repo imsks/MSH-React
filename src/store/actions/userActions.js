@@ -11,7 +11,6 @@ export const addCarDetails = (payload) => {
       data: { carData: payload.carData },
     })
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: "ADD_CAR_DETAILS__SUCCESS",
           message: res.data.message,
@@ -36,7 +35,6 @@ export const editCarDetails = (payload) => {
       data: { ...payload },
     })
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: "EDIT_CAR_DETAILS__SUCCESS",
           message: res.data.message,
@@ -61,7 +59,6 @@ export const deleteCarDetails = (payload) => {
       data: { ...payload },
     })
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: "DELETE_CAR_DETAILS__SUCCESS",
           message: res.data.message,

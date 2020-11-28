@@ -487,12 +487,12 @@ const CarDetails = (props) => {
         )}
 
         {error && error ? (
-          <h1 className="cardetails__auth__content__form__error">error</h1>
+          <h1 className="cardetails__auth__content__form__error u-center-text">error</h1>
         ) : (
           ""
         )}
         {message && message ? (
-          <h1 className="cardetails__auth__content__form__message">
+          <h1 className="cardetails__auth__content__form__message u-center-text">
             {message}
           </h1>
         ) : (

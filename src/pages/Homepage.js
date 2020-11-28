@@ -81,7 +81,6 @@ const Homepage = (props) => {
 
 const mapStateToProps = (state) => {
   const data = JSON.parse(localStorage.getItem("admin"));
-  console.log(data);
 
   return {
     data,

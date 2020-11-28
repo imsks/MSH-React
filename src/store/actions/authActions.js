@@ -5,7 +5,6 @@ import config from "../../config";
 export const userSignInWithEmailAndPassword = (credentials) => {
   return (dispatch) => {
     const { userName, password } = credentials;
-    console.log(credentials)
 
     axios({
       method: "post",

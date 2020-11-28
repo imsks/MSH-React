@@ -7,7 +7,6 @@ const AdminDashboard = () => {
   const [allCarsList, setAllCarsList] = useState([]);
 
   useEffect(() => {
-    // console.log(localStorage.getItem("admin"));
     axios({
       method: "get",
       url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/get-all-cars`,
