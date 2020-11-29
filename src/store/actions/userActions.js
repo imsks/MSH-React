@@ -19,7 +19,7 @@ export const addCarDetails = (payload) => {
       .catch((err) => {
         dispatch({
           type: "ADD_CAR_DETAILS__FAILED",
-          error: err.data.message,
+          error: err.data.message || "Failed",
         });
       });
   };

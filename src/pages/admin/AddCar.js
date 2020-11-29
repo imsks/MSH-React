@@ -9,6 +9,7 @@ const AddCar = (props) => {
   const [carName, setCarName] = useState("");
   const [modelNo, setModelNo] = useState("");
   const [type, setType] = useState("");
+  const [carImage, setCarImage] = useState("");
   const [exShowRoom, setExShowRoom] = useState(0);
   const [taxCollectedAtSource, setTaxCollectedAtSource] = useState(0);
   const [insuranceFor1Year, setInsuranceFor1Year] = useState(0);
@@ -110,6 +111,24 @@ const AddCar = (props) => {
     setType(document.getElementById("type").selectedOptions[0].value);
   };
 
+  // Handle Car Image
+  const handleChangeCarImage = (e) => {
+    // Handle Blog Thumbnail
+    const fileList = e.target.files;
+    // console.log(e.target.files);
+
+    const f = fileList[0];
+    // console.log(f);
+
+    const reader = new FileReader();
+
+    reader.onload = (frEvent) => {
+      setCarImage(frEvent.target.result);
+      console.log(frEvent.target.result);
+    };
+    reader.readAsDataURL(f);
+  };
+
   // Handle Car Details
   const handleAddCarDetails = (e) => {
     e.preventDefault();
@@ -119,6 +138,7 @@ const AddCar = (props) => {
         carName,
         modelNo,
         type,
+        carImage,
         exShowRoom,
         taxCollectedAtSource,
         insuranceFor1Year,
@@ -200,6 +220,7 @@ const AddCar = (props) => {
               Diesel
             </option>
           </select>
+
           <label className="addcar__auth__content__form__label">
             Ex ShowRoom Price
           </label>
@@ -360,6 +381,18 @@ const AddCar = (props) => {
             onChange={handleInput}
             autoComplete="false"
           />
+
+          <div className="addcar__auth__content__form__image">
+            <button className="addcar__auth__content__form__image__button">
+              Upload a file
+            </button>
+            <input
+              type="file"
+              name="myfile"
+              onChange={handleChangeCarImage}
+              accept="image/x-png,image/gif,image/jpeg,image/webp"
+            />
+          </div>
 
           <button className="btn btn-md addcar__auth__content__form__submit">
             {submitClicked && !error ? "Adding up" : "Add Car"}

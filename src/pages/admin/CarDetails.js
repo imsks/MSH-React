@@ -12,6 +12,7 @@ const CarDetails = (props) => {
   const [carName, setCarName] = useState("");
   const [modelNo, setModelNo] = useState("");
   const [type, setType] = useState("");
+  const [carImage, setCarImage] = useState("");
   const [exShowRoom, setExShowRoom] = useState(0);
   const [taxCollectedAtSource, setTaxCollectedAtSource] = useState(0);
   const [insuranceFor1Year, setInsuranceFor1Year] = useState(0);
@@ -64,6 +65,7 @@ const CarDetails = (props) => {
           setType(res.data.data.carData.type);
           document.getElementById("type").value = res.data.data.carData.type;
         }
+        setCarImage(res.data.data.carData.carImage);
         setExShowRoom(res.data.data.carData.exShowRoom);
         setTaxCollectedAtSource(res.data.data.carData.taxCollectedAtSource);
         setInsuranceFor1Year(res.data.data.carData.insuranceFor1Year);
@@ -164,6 +166,24 @@ const CarDetails = (props) => {
     setType(document.getElementById("type").selectedOptions[0].value);
   };
 
+  // Handle Car Image
+  const handleChangeCarImage = (e) => {
+    // Handle Blog Thumbnail
+    const fileList = e.target.files;
+    // console.log(e.target.files);
+
+    const f = fileList[0];
+    // console.log(f);
+
+    const reader = new FileReader();
+
+    reader.onload = (frEvent) => {
+      setCarImage(frEvent.target.result);
+      console.log(frEvent.target.result);
+    };
+    reader.readAsDataURL(f);
+  };
+
   // Handle Car Details
   const handleEditCarDetails = (e) => {
     e.preventDefault();
@@ -174,6 +194,7 @@ const CarDetails = (props) => {
         carName,
         modelNo,
         type,
+        carImage,
         exShowRoom,
         taxCollectedAtSource,
         insuranceFor1Year,
@@ -470,6 +491,18 @@ const CarDetails = (props) => {
               required
             />
 
+            <div className="addcar__auth__content__form__image">
+              <button className="addcar__auth__content__form__image__button">
+                Upload a file
+              </button>
+              <input
+                type="file"
+                name="myfile"
+                onChange={handleChangeCarImage}
+                accept="image/x-png,image/gif,image/jpeg,image/webp"
+              />
+            </div>
+
             <button className="btn btn-md cardetails__auth__content__form__submit">
               {editClicked && !error ? "Editing up" : "Edit details"}
             </button>
@@ -487,7 +520,9 @@ const CarDetails = (props) => {
         )}
 
         {error && error ? (
-          <h1 className="cardetails__auth__content__form__error u-center-text">error</h1>
+          <h1 className="cardetails__auth__content__form__error u-center-text">
+            error
+          </h1>
         ) : (
           ""
         )}

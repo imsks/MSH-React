@@ -65,7 +65,7 @@ const Homepage = (props) => {
             />
 
             <button className="btn btn-md homepage__auth__content__form__submit">
-              {submitClicked && !error ? "Signing up" : "Sign up"}
+              {submitClicked && !error ? "Logging in" : "Log in"}
             </button>
           </form>
           {error && error ? (

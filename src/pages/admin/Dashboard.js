@@ -40,9 +40,9 @@ const AdminDashboard = () => {
         Add A New Car?
       </h1>
 
-      <Link to="/add" className="admindashboard__header__link u-center-text">
+      <a href="/add" className="admindashboard__header__link u-center-text">
         <button className="btn btn-md">Add Car</button>
-      </Link>
+      </a>
 
       <h1
         className="admindashboard__header__heading heading-primary--sub u-center-text"
@@ -59,6 +59,13 @@ const AdminDashboard = () => {
                 className="admindashboard__content__card"
                 to={`/car/${car.id}`}
               >
+                <img
+                  src={
+                    car.data.carData.carImage ||
+                    "https://images.financialexpress.com/2020/05/3-13-1.jpg"
+                  } className="admindashboard__content__card__image"
+                />
+                <div className="admindashboard__content__card__content">
                 <h1 className="heading-primary--main">
                   {car.data.carData.carName}
                 </h1>
@@ -68,6 +75,7 @@ const AdminDashboard = () => {
                 <h3 className="heading-primary--sub">
                   {car.data.carData.type}
                 </h3>
+                </div>
               </Link>
             ) : (
               ""
