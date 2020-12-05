@@ -53,6 +53,9 @@ const AddCar = (props) => {
       case "modelNo":
         setModelNo(value);
         break;
+      case "carImage":
+        setCarImage(value);
+        break;
       case "exShowRoom":
         setExShowRoom(value);
         break;
@@ -222,6 +225,19 @@ const AddCar = (props) => {
           </select>
 
           <label className="addcar__auth__content__form__label">
+            Car Image Link
+          </label>
+          <input
+            type="text"
+            className="addcar__auth__content__form__input"
+            name="carImage"
+            onChange={handleInput}
+            autoComplete="false"
+            value={carImage || ""}
+            required
+          />
+
+          <label className="addcar__auth__content__form__label">
             Ex ShowRoom Price
           </label>
           <input
@@ -381,18 +397,6 @@ const AddCar = (props) => {
             onChange={handleInput}
             autoComplete="false"
           />
-
-          <div className="addcar__auth__content__form__image">
-            <button className="addcar__auth__content__form__image__button">
-              Upload a file
-            </button>
-            <input
-              type="file"
-              name="myfile"
-              onChange={handleChangeCarImage}
-              accept="image/x-png,image/gif,image/jpeg,image/webp"
-            />
-          </div>
 
           <button className="btn btn-md addcar__auth__content__form__submit">
             {submitClicked && !error ? "Adding up" : "Add Car"}

@@ -108,6 +108,9 @@ const CarDetails = (props) => {
       case "modelNo":
         setModelNo(value);
         break;
+      case "carImage":
+        setCarImage(value);
+        break;
       case "exShowRoom":
         setExShowRoom(value);
         break;
@@ -262,7 +265,7 @@ const CarDetails = (props) => {
               name="carName"
               onChange={handleInput}
               autoComplete="false"
-              value={carName}
+              value={carName || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -274,7 +277,7 @@ const CarDetails = (props) => {
               name="modelNo"
               onChange={handleInput}
               autoComplete="false"
-              value={modelNo}
+              value={modelNo || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -299,6 +302,18 @@ const CarDetails = (props) => {
               </option>
             </select>
             <label className="cardetails__auth__content__form__label">
+              Car Image Link
+            </label>
+            <input
+              type="text"
+              className="addcar__auth__content__form__input"
+              name="carImage"
+              onChange={handleInput}
+              autoComplete="false"
+              value={carImage || ""}
+              required
+            />
+            <label className="cardetails__auth__content__form__label">
               Your Ex ShowRoom Price
             </label>
             <input
@@ -307,7 +322,7 @@ const CarDetails = (props) => {
               name="exShowRoom"
               onChange={handleInput}
               autoComplete="false"
-              value={exShowRoom}
+              value={exShowRoom || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -319,7 +334,7 @@ const CarDetails = (props) => {
               name="taxCollectedAtSource"
               onChange={handleInput}
               autoComplete="false"
-              value={taxCollectedAtSource}
+              value={taxCollectedAtSource || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -331,7 +346,7 @@ const CarDetails = (props) => {
               name="insuranceFor1Year"
               onChange={handleInput}
               autoComplete="false"
-              value={insuranceFor1Year}
+              value={insuranceFor1Year || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -343,7 +358,7 @@ const CarDetails = (props) => {
               name="insuranceDifferentsAmountFor2Years"
               onChange={handleInput}
               autoComplete="false"
-              value={insuranceDifferentsAmountFor2Years}
+              value={insuranceDifferentsAmountFor2Years || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -355,7 +370,7 @@ const CarDetails = (props) => {
               name="roadTaxAndRegistrationCharges"
               onChange={handleInput}
               autoComplete="false"
-              value={roadTaxAndRegistrationCharges}
+              value={roadTaxAndRegistrationCharges || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -367,7 +382,7 @@ const CarDetails = (props) => {
               name="Fastag"
               onChange={handleInput}
               autoComplete="false"
-              value={Fastag}
+              value={Fastag || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -379,7 +394,7 @@ const CarDetails = (props) => {
               name="basicAccessoriesKit"
               onChange={handleInput}
               autoComplete="false"
-              value={basicAccessoriesKit}
+              value={basicAccessoriesKit || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -391,7 +406,7 @@ const CarDetails = (props) => {
               name="extendedWarranty"
               onChange={handleInput}
               autoComplete="false"
-              value={extendedWarranty}
+              value={extendedWarranty || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -403,7 +418,7 @@ const CarDetails = (props) => {
               name="roadSideAssistance"
               onChange={handleInput}
               autoComplete="false"
-              value={roadSideAssistance}
+              value={roadSideAssistance || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -415,7 +430,7 @@ const CarDetails = (props) => {
               name="onRoadPrice"
               onChange={handleInput}
               autoComplete="false"
-              value={onRoadPrice}
+              value={onRoadPrice || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -427,7 +442,7 @@ const CarDetails = (props) => {
               name="zeroDepPolicy"
               onChange={handleInput}
               autoComplete="false"
-              value={zeroDepPolicy}
+              value={zeroDepPolicy || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -439,7 +454,7 @@ const CarDetails = (props) => {
               name="hydrostaticLockCoverAndKeyCost"
               onChange={handleInput}
               autoComplete="false"
-              value={hydrostaticLockCoverAndKeyCost}
+              value={hydrostaticLockCoverAndKeyCost || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -451,7 +466,7 @@ const CarDetails = (props) => {
               name="returnToInvoice"
               onChange={handleInput}
               autoComplete="false"
-              value={returnToInvoice}
+              value={returnToInvoice || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -463,7 +478,7 @@ const CarDetails = (props) => {
               name="priceToConnectedDevice"
               onChange={handleInput}
               autoComplete="false"
-              value={priceToConnectedDevice}
+              value={priceToConnectedDevice || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -475,7 +490,7 @@ const CarDetails = (props) => {
               name="totalOnRoadPriceWithOptionalAddOns"
               onChange={handleInput}
               autoComplete="false"
-              value={totalOnRoadPriceWithOptionalAddOns}
+              value={totalOnRoadPriceWithOptionalAddOns || ""}
               required
             />
             <label className="cardetails__auth__content__form__label">
@@ -487,21 +502,9 @@ const CarDetails = (props) => {
               name="oneYearSubscriptionOfConnectedDevices"
               onChange={handleInput}
               autoComplete="false"
-              value={oneYearSubscriptionOfConnectedDevices}
+              value={oneYearSubscriptionOfConnectedDevices || ""}
               required
             />
-
-            <div className="addcar__auth__content__form__image">
-              <button className="addcar__auth__content__form__image__button">
-                Upload a file
-              </button>
-              <input
-                type="file"
-                name="myfile"
-                onChange={handleChangeCarImage}
-                accept="image/x-png,image/gif,image/jpeg,image/webp"
-              />
-            </div>
 
             <button className="btn btn-md cardetails__auth__content__form__submit">
               {editClicked && !error ? "Editing up" : "Edit details"}

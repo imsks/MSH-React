@@ -15,9 +15,6 @@ export const userSignInWithEmailAndPassword = (credentials) => {
       },
     })
       .then((res) => {
-        // const { _id } = res.data.user;
-        // console.log(res.data.data);
-
         localStorage.setItem("admin", JSON.stringify(res.data.data));
 
         dispatch({

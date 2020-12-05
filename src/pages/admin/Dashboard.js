@@ -12,16 +12,12 @@ const AdminDashboard = () => {
       url: `${config.REACT_APP_NODE_API_URL}/api/admin/cars/get-all-cars`,
     })
       .then((res) => {
-        // console.log(res.data.data);
-        // // const { isApproved } = res.data.data;
         setAllCarsList(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  // console.log(allCarsList);
 
   const id = localStorage.getItem("admin");
 
