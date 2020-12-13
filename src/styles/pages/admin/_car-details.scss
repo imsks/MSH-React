@@ -15,6 +15,10 @@
       }
     }
 
+    &__subheading {
+      color: $color-primary;
+    }
+
     &__loading {
       font-weight: 600;
       color: $color-primary;
@@ -117,6 +121,81 @@
           font-size: 2rem;
           font-weight: 800;
           color: #57e257;
+        }
+
+        &__addon {
+          margin: 5rem 0;
+          &__input {
+            width: 100%;
+            margin: 2rem 0;
+            display: grid;
+            gap: 1rem;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            &__name {
+              width: 100%;
+              padding: 1rem;
+              margin: 0.5rem 0;
+              outline: none;
+              color: $color-primary;
+              font-size: 3rem;
+              border: 2px solid $color-primary;
+              transition: 0.3s all;
+
+              &::placeholder {
+                color: $color-primary;
+                font-weight: 600;
+              }
+
+              &:focus {
+                background-color: $color-primary;
+                color: $color-white;
+              }
+
+              @include respond(phone) {
+                font-size: 3rem;
+              }
+            }
+
+            &__value {
+              width: 100%;
+              padding: 1rem;
+              margin: 0.5rem 0;
+              outline: none;
+              color: $color-primary;
+              font-size: 3rem;
+              border: 2px solid $color-primary;
+              transition: 0.3s all;
+
+              &::placeholder {
+                color: $color-primary;
+                font-weight: 600;
+              }
+
+              &:focus {
+                background-color: $color-primary;
+                color: $color-white;
+              }
+
+              @include respond(phone) {
+                font-size: 3rem;
+              }
+            }
+          }
+
+          &__content {
+            width: 100%;
+            &__item {
+              width: 100%;
+              margin: 2rem 0;
+              display: grid;
+              gap: 1rem;
+              justify-items: center;
+              align-items: center;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+          }
         }
       }
 

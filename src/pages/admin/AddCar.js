@@ -41,6 +41,9 @@ const AddCar = (props) => {
     oneYearSubscriptionOfConnectedDevices,
     setOneYearSubscriptionOfConnectedDevices,
   ] = useState(0);
+  const [addOns, setAddOns] = useState([]);
+  const [addOnName, setAddOnName] = useState("");
+  const [addOnValue, setAddOnValue] = useState("");
   const [submitClicked, setSubmitClicked] = useState(false);
 
   // Handle input
@@ -109,6 +112,39 @@ const AddCar = (props) => {
     }
   };
 
+  // Handle Add Add-on
+  const handleAddAddOn = (e) => {
+    const { name, value } = e.currentTarget;
+    switch (name) {
+      case "addOnName":
+        setAddOnName(value);
+        break;
+      case "addOnValue":
+        setAddOnValue(value);
+        break;
+    }
+  };
+
+  // Adding Add-on
+  const addAddOn = (e) => {
+    e.preventDefault();
+
+    setAddOns((oldArray) => [
+      ...oldArray,
+      {
+        addOnName,
+        addOnValue,
+      },
+    ]);
+  };
+
+  // Handle Delete Add-On
+  const deleteAddOn = (e) => {
+    e.preventDefault();
+    const arr = addOns.filter((item, key) => item.addOnName !== e.target.value);
+    setAddOns(arr);
+  };
+
   // Handle Select type
   const handleSelectType = () => {
     setType(document.getElementById("type").selectedOptions[0].value);
@@ -158,6 +194,9 @@ const AddCar = (props) => {
         priceToConnectedDevice,
         totalOnRoadPriceWithOptionalAddOns,
         oneYearSubscriptionOfConnectedDevices,
+        addOnsData: {
+          ...addOns,
+        },
       },
     });
 
@@ -398,7 +437,68 @@ const AddCar = (props) => {
             autoComplete="false"
           />
 
-          <button className="btn btn-md addcar__auth__content__form__submit">
+          <div className="cardetails__auth__content__form__addon">
+            <h1 className="cardetails__header__heading heading-primary--main u-center-text">
+              Add Add-Ons
+            </h1>
+            <div className="cardetails__auth__content__form__addon__input">
+              <label className="cardetails__auth__content__form__label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="cardetails__auth__content__form__addon__input__name"
+                name="addOnName"
+                onChange={handleAddAddOn}
+                autoComplete="false"
+              />
+            </div>
+
+            <div className="cardetails__auth__content__form__addon__input">
+              <label className="cardetails__auth__content__form__label">
+                Value
+              </label>
+              <input
+                type="text"
+                className="cardetails__auth__content__form__addon__input__value"
+                name="addOnValue"
+                onChange={handleAddAddOn}
+                autoComplete="false"
+              />
+            </div>
+
+            <div className="cardetails__auth__content__form__addon__content">
+              {addOns.map((addOn, key) => (
+                <div
+                  className="cardetails__auth__content__form__addon__content__item"
+                  key={key}
+                >
+                  <h2 className="cardetails__header__subheading heading-secondary--main u-center-text">
+                    {addOn.addOnName}
+                  </h2>
+                  <h2 className="cardetails__header__subheading heading-secondary--main u-center-text">
+                    {addOn.addOnValue}
+                  </h2>
+                  <button
+                    className="btn btn-md cardetails__auth__content__form__submit"
+                    onClick={deleteAddOn}
+                    value={addOn.addOnName}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="btn btn-md cardetails__auth__content__form__submit"
+              onClick={addAddOn}
+            >
+              Add Add-on
+            </button>
+          </div>
+
+          <button className="btn btn-md cardetails__auth__content__form__submit">
             {submitClicked && !error ? "Adding up" : "Add Car"}
           </button>
         </form>
