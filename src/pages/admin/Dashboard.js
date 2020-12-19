@@ -40,6 +40,18 @@ const AdminDashboard = () => {
         <button className="btn btn-md">Add Car</button>
       </a>
 
+      <div className="admindashboard__quote">
+        <h1
+          className="admindashboard__header__heading heading-primary--sub u-center-text"
+          style={{ margin: "4rem 0 2rem 0" }}
+        >
+          OR
+        </h1>
+        <a href="/quotes" className="admindashboard__header__link u-center-text">
+          <button className="btn btn-md">View All Quotes</button>
+        </a>
+      </div>
+
       <h1
         className="admindashboard__header__heading heading-primary--sub u-center-text"
         style={{ margin: "4rem 0 0 0" }}
@@ -59,18 +71,19 @@ const AdminDashboard = () => {
                   src={
                     car.data.carData.carImage ||
                     "https://images.financialexpress.com/2020/05/3-13-1.jpg"
-                  } className="admindashboard__content__card__image"
+                  }
+                  className="admindashboard__content__card__image"
                 />
                 <div className="admindashboard__content__card__content">
-                <h1 className="heading-primary--main">
-                  {car.data.carData.carName}
-                </h1>
-                <h2 className="heading-primary--sub">
-                  {car.data.carData.modelNo}
-                </h2>
-                <h3 className="heading-primary--sub">
-                  {car.data.carData.type}
-                </h3>
+                  <h1 className="heading-primary--main">
+                    {car.data.carData.carName}
+                  </h1>
+                  <h2 className="heading-primary--sub">
+                    {car.data.carData.modelNo}
+                  </h2>
+                  <h3 className="heading-primary--sub">
+                    {car.data.carData.type}
+                  </h3>
                 </div>
               </Link>
             ) : (
