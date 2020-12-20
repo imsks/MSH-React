@@ -10,7 +10,7 @@
     gap: 1rem;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     &__card {
       width: 100%;
       background-color: $color-primary;

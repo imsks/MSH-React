@@ -150,24 +150,6 @@ const AddCar = (props) => {
     setType(document.getElementById("type").selectedOptions[0].value);
   };
 
-  // Handle Car Image
-  const handleChangeCarImage = (e) => {
-    // Handle Blog Thumbnail
-    const fileList = e.target.files;
-    // console.log(e.target.files);
-
-    const f = fileList[0];
-    // console.log(f);
-
-    const reader = new FileReader();
-
-    reader.onload = (frEvent) => {
-      setCarImage(frEvent.target.result);
-      console.log(frEvent.target.result);
-    };
-    reader.readAsDataURL(f);
-  };
-
   // Handle Car Details
   const handleAddCarDetails = (e) => {
     e.preventDefault();

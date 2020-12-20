@@ -1,4 +1,4 @@
-const envName = "dev";
+const envName = "prod";
 
 const dev = {
   REACT_APP_NODE_API_URL: "http://localhost:8000",

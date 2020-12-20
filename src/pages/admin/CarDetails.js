@@ -251,12 +251,6 @@ const CarDetails = (props) => {
     props.deleteCarDetails({
       carId: window.location.pathname.split("/")[2],
     });
-
-    window.location.href = "/dashboard";
-
-    setTimeout(() => {
-      setDeleteClicked(false);
-    }, 3000);
   };
 
   const id = localStorage.getItem("admin");
