@@ -22,7 +22,7 @@ const AddCar = (props) => {
     setRoadTaxAndRegistrationCharges,
   ] = useState(0);
   const [Fastag, setFastag] = useState(0);
-  const [basicAccessoriesKit, setBasicAccessoriesKit] = useState(0);
+  const [discount, setDiscount] = useState(0);
   const [extendedWarranty, setExtendedWarranty] = useState(0);
   const [roadSideAssistance, setRoadSideAssistance] = useState(0);
   const [onRoadPrice, setOnRoadPrice] = useState(0);
@@ -77,35 +77,8 @@ const AddCar = (props) => {
       case "Fastag":
         setFastag(value);
         break;
-      case "basicAccessoriesKit":
-        setBasicAccessoriesKit(value);
-        break;
-      case "extendedWarranty":
-        setExtendedWarranty(value);
-        break;
-      case "roadSideAssistance":
-        setRoadSideAssistance(value);
-        break;
-      case "onRoadPrice":
-        setOnRoadPrice(value);
-        break;
-      case "zeroDepPolicy":
-        setZeroDepPolicy(value);
-        break;
-      case "hydrostaticLockCoverAndKeyCost":
-        setHydrostaticLockCoverAndKeyCost(value);
-        break;
-      case "returnToInvoice":
-        setReturnToInvoice(value);
-        break;
-      case "priceToConnectedDevice":
-        setPriceToConnectedDevice(value);
-        break;
-      case "totalOnRoadPriceWithOptionalAddOns":
-        setTotalOnRoadPriceWithOptionalAddOns(value);
-        break;
-      case "oneYearSubscriptionOfConnectedDevices":
-        setOneYearSubscriptionOfConnectedDevices(value);
+      case "discount":
+        setDiscount(value);
         break;
       default:
         break;
@@ -166,16 +139,7 @@ const AddCar = (props) => {
         insuranceDifferentsAmountFor2Years,
         roadTaxAndRegistrationCharges,
         Fastag,
-        basicAccessoriesKit,
-        extendedWarranty,
-        roadSideAssistance,
-        onRoadPrice,
-        zeroDepPolicy,
-        hydrostaticLockCoverAndKeyCost,
-        returnToInvoice,
-        priceToConnectedDevice,
-        totalOnRoadPriceWithOptionalAddOns,
-        oneYearSubscriptionOfConnectedDevices,
+        discount,
         addOnsData: {
           ...addOns,
         },
@@ -319,106 +283,15 @@ const AddCar = (props) => {
             autoComplete="false"
           />
           <label className="addcar__auth__content__form__label">
-            Basic Accessories Kit Price
+            Discount
           </label>
           <input
             type="text"
             className="addcar__auth__content__form__input"
-            name="basicAccessoriesKit"
+            name="discount"
             onChange={handleInput}
             autoComplete="false"
           />
-          <label className="addcar__auth__content__form__label">
-            Extended Warranty Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="extendedWarranty"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Road Side Assistance Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="roadSideAssistance"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            On Road Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="onRoadPrice"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Zero Dep Policy Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="zeroDepPolicy"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Hydrostatic Lock Cover And Key Cost Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="hydrostaticLockCoverAndKeyCost"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Return To Invoice Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="returnToInvoice"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Price To Connected Device Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="priceToConnectedDevice"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            Total On Road Price With Optional AddOns Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="totalOnRoadPriceWithOptionalAddOns"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-          <label className="addcar__auth__content__form__label">
-            One Year Subscription Of Connected Devices Price
-          </label>
-          <input
-            type="text"
-            className="addcar__auth__content__form__input"
-            name="oneYearSubscriptionOfConnectedDevices"
-            onChange={handleInput}
-            autoComplete="false"
-          />
-
           <div className="cardetails__auth__content__form__addon">
             <h1 className="cardetails__header__heading heading-primary--main u-center-text">
               Add Add-Ons
